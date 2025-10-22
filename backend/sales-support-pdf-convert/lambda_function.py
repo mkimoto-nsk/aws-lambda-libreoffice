@@ -45,7 +45,7 @@ def convert_office_to_pdf(input_path, output_path):
     LibreOfficeを呼び出してOfficeファイルをPDFに変換
     """
     cmd = [
-        "libreoffice",
+        "libreoffice25.2",
         "--headless",
         "--convert-to", "pdf",
         "--outdir", os.path.dirname(output_path),

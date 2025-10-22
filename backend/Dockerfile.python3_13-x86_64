@@ -33,3 +33,10 @@ RUN touch /tmp/test.txt \
         --nolockcheck --nologo --norestore --convert-to pdf \
         --outdir /tmp /tmp/test.txt \
     && rm /tmp/test.*
+
+
+# Lambda のソースをコピー
+COPY sales-support-pdf-convert/lambda_function.py ${LAMBDA_TASK_ROOT}/
+
+# これを追加
+CMD ["lambda_function.lambda_handler"]

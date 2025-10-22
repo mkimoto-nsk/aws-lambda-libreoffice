@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Lambda to convert Office files to PDF via LibreOffice
+
+Resources:
+  SalesSupportPdfConvertFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      FunctionName: sales-support-pdf-convert
+      ImageUri: sales-support-pdf-convert:latest
+      Timeout: 900  # LibreOffice 変換時間に合わせて調整
+      MemorySize: 4096
+      Events:
+        S3UploadEvent:
+          Type: S3
+          Properties:
+            Bucket: m-kimoto-test-bucket
+            Events: s3:ObjectCreated:*
