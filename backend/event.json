@@ -3,7 +3,7 @@
     {
       "s3": {
         "bucket": { "name": "m-kimoto-test-bucket" },
-        "object": { "key": "b4convert/docx.docx" }
+        "object": { "key": "b4convert/html.html" }
       }
     }
   ]

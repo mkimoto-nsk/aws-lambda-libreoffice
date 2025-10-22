@@ -1,2 +1,2 @@
-reportlab==3.7.0
-PyPDF2==3.1.0
+reportlab
+PyPDF2

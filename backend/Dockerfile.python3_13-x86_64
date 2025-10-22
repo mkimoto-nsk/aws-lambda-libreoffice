@@ -35,8 +35,12 @@ RUN touch /tmp/test.txt \
     && rm /tmp/test.*
 
 
-# Lambda のソースをコピー
-COPY sales-support-pdf-convert/lambda_function.py ${LAMBDA_TASK_ROOT}/
+# requirements.txt に記載された Python ライブラリをインストールする
+WORKDIR ${LAMBDA_TASK_ROOT}
+COPY sales-support-pdf-convert/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# これを追加
+
+# Lambda のソースをコピー(<フォルダ名>/lambda_function.py)
+COPY sales-support-pdf-convert/lambda_function.py ${LAMBDA_TASK_ROOT}/
 CMD ["lambda_function.lambda_handler"]
